@@ -1,38 +1,14 @@
-import { type Context, MoonPlugin, type MoonPluginConstructorProps, type MoonPluginSettings, type PluginSettingsDescription } from '@moonjot/moon';
-interface SamplePluginSettingsDescription extends PluginSettingsDescription {
-    token: {
-        type: 'string';
-        required: boolean;
-        label: string;
-        description: string;
-    };
-    databaseId: {
-        type: 'string';
-        required: boolean;
-        label: string;
-        description: string;
-    };
+import { MoonPlugin, type PluginMentionItem, type MoonPluginConstructorProps, type MoonPluginSettings, type PluginSettingsDescription } from '@moonjot/moon';
+interface MayThe4thSettingsDescription extends PluginSettingsDescription {
 }
-interface SamplePluginSettings extends MoonPluginSettings {
-    token: string;
-    databaseId: string;
+interface MayThe4thSettings extends MoonPluginSettings {
 }
 export default class extends MoonPlugin {
     name: string;
     logo: string;
-    settingsDescription: SamplePluginSettingsDescription;
-    settings: SamplePluginSettings;
-    constructor(props?: MoonPluginConstructorProps<SamplePluginSettings>);
-    integration: {
-        callback: ({ context, html }: {
-            html: string;
-            markdown: string;
-            context: Context;
-        }) => Promise<boolean>;
-        buttonIconUrl: string;
-    };
-    context: ({ context }: {
-        context: Context;
-    }) => Promise<Context>;
+    settingsDescription: MayThe4thSettingsDescription;
+    settings: MayThe4thSettings;
+    constructor(props?: MoonPluginConstructorProps<MayThe4thSettings>);
+    mention: () => PluginMentionItem[];
 }
 export {};
