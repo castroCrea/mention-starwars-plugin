@@ -1,5 +1,5 @@
 {
-  "name": "@moonjot/moon-sample-plugin",
+  "name": "@moonjot/mention-starwars-plugin",
   "version": "0.0.0",
   "description": "Moon sample plugin for Moon",
   "main": "./dist/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/castroCrea/moon-sample-plugin"
+    "url": "https://github.com/castroCrea/mention-starwars-plugin"
   },
   "types": "./dist/index.d.ts",
   "scripts": {
