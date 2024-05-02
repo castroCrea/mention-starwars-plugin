@@ -8,6 +8,7 @@ export default class extends MoonPlugin {
     logo: string;
     settingsDescription: MayThe4thSettingsDescription;
     settings: MayThe4thSettings;
+    log: ((value: string) => void) | undefined;
     constructor(props?: MoonPluginConstructorProps<MayThe4thSettings>);
     mention: () => PluginMentionItem[];
 }

@@ -17,11 +17,14 @@ export default class extends MoonPlugin {
   settings: MayThe4thSettings = {
   }
 
+  log: ((value: string) => void) | undefined
+
   constructor (props?: MoonPluginConstructorProps<MayThe4thSettings>) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     super(props)
     if (!props) return
     if (props.settings) this.settings = props.settings
+    this.log = props.helpers.moonLog
   }
 
   mention = (): PluginMentionItem[] => {
@@ -76,17 +79,19 @@ export default class extends MoonPlugin {
       ]
     }
     return [{
-      name: 'keywords',
+      name: 'May4th',
       char: 'May4th',
       htmlClass: 'mention_collections',
       allowSpaces: true,
       getListItem: () => {
-        return Object.keys(LIST).map(k => ({ title: k }))
+        return Object.keys(LIST).map((k) => ({ title: k, quotes: LIST[k as keyof typeof LIST] }))
       },
       onSelectItem: (
-        { item, addMention }) => {
-        const content = LIST[item.title as keyof typeof LIST]
-        addMention(content[Math.floor(Math.random() * 10)])
+        { item, editor, deleteMentionPlaceholder }) => {
+        const content = item.quotes as string[]
+        const sentence = content[Math.floor(Math.random() * 10)]
+        deleteMentionPlaceholder()
+        editor.commands.insertContent(sentence)
       }
     }]
   }

@@ -1,7 +1,7 @@
 {
   "name": "@moonjot/mention-starwars-plugin",
-  "version": "0.0.1",
-  "description": "Moon sample plugin for Moon",
+  "version": "0.0.2",
+  "description": "Star Wars Mention",
   "main": "./dist/index.js",
   "dependencies": {
     "@moonjot/moon": "^0.1.65"

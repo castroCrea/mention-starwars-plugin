@@ -61,16 +61,18 @@ class default_1 extends moon_1.MoonPlugin {
                 ]
             };
             return [{
-                    name: 'keywords',
+                    name: 'May4th',
                     char: 'May4th',
                     htmlClass: 'mention_collections',
                     allowSpaces: true,
                     getListItem: () => {
-                        return Object.keys(LIST).map(k => ({ title: k }));
+                        return Object.keys(LIST).map((k) => ({ title: k, quotes: LIST[k] }));
                     },
-                    onSelectItem: ({ item, addMention }) => {
-                        const content = LIST[item.title];
-                        addMention(content[Math.floor(Math.random() * 10)]);
+                    onSelectItem: ({ item, editor, deleteMentionPlaceholder }) => {
+                        const content = item.quotes;
+                        const sentence = content[Math.floor(Math.random() * 10)];
+                        deleteMentionPlaceholder();
+                        editor.commands.insertContent(sentence);
                     }
                 }];
         };
@@ -78,6 +80,7 @@ class default_1 extends moon_1.MoonPlugin {
             return;
         if (props.settings)
             this.settings = props.settings;
+        this.log = props.helpers.moonLog;
     }
 }
 exports.default = default_1;
