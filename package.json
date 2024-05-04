@@ -1,6 +1,6 @@
 {
   "name": "@moonjot/mention-starwars-plugin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Star Wars Mention",
   "main": "./dist/index.js",
   "dependencies": {
